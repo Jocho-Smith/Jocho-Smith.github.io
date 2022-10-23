@@ -142,3 +142,448 @@ dl {
     margin-top: revert;
     margin-bottom: revert;
 }
+
+.zweite li {
+    position: relative;
+    left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ========= Navigation styles ========= */
+
+nav {
+    /* align-self: center; */
+    border-bottom: 2px solid black;
+
+}
+
+nav .dropdown-area {
+    position: relative;
+    display: inline-block;
+}
+
+nav .dropdown-btn {
+    background-color: white;
+    color: var(--text-color);
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    margin-top: -1px;
+    background-color: #fafafa;
+    min-width: 100%;
+}
+
+nav .dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+nav .dropdown-content a:hover,
+nav .mobile-hover {
+    background-color: #eee;
+}
+
+nav .dropdown-area:hover .dropdown-btn,
+nav .mobile-hover .dropdown-btn {
+    background-color: #eee;
+}
+
+nav .dropdown-area:hover .dropdown-content,
+nav .mobile-hover .dropdown-content{
+    display: block;
+    z-index: 10;
+}
+
+nav .dropdown-area,
+.no-select {
+    user-select: none; /* Currently supported by most browsers */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -webkit-user-select: none; /* Safari */
+    -webkit-touch-callout: none; /* iOS Safari */
+}
+
+nav .icon.dropdown-btn{
+    display: block;
+    position: relative; 
+    width: 5em;
+    padding: 0px;
+}
+
+input,
+select,
+textarea {
+    background-color: #fff;
+    border-color: #e0e0e0;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    border-width: 1px;
+    border-style: solid;
+    color: #474e57;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    width: auto;
+}
+
+p.foto {
+    text-align: right;
+}
+
+
+fieldset {
+	margin: 0 0 20px 0;
+}
+
+footer{
+    font-size: 16px;
+    display: flex;
+    padding: 10px 0 10px 0;
+    justify-content: space-around;
+    border-top: 1px solid #aaa
+}
+
+.responsive-video iframe,
+.responsive-video video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.responsive-video {
+position: relative;
+padding-bottom: 56.25%; /* Default for 1600x900 videos 16:9 ratio*/
+padding-top: 0px;
+height: 0;
+overflow: hidden;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner{
+    display:table;
+    margin:auto;
+    width:230px;
+}
+
+.footer{
+    display:table;
+    margin:auto;
+}
+
+.table-row{
+    display:table-row;
+    margin:auto;
+}
+
+.table-column{
+    display:table-cell;
+    margin:auto;
+}
+
+.lebenspraxis{
+    margin-top: 0px;
+}
+
+a.no-decoration{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.icon{
+    width:100px;
+    display: inline-block;
+    position: relative; 
+}
+
+/* I Teach Nothing Styles */
+.i-teach-nothing {
+	text-align: center;
+}
+.i-teach-nothing h1 {
+    font-family: "Baar Philos";
+	text-transform: uppercase;
+	font-size: 70px;
+    text-align: center;
+}
+
+.i-teach-nothing nav li {
+	display: inline;
+}
+
+
+
+/* make keyframes that tell the start state and the end state of our object */
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.fade-in.half {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay:0.5s;
+    animation-delay: 0.5s;
+}
+
+.fade-in.two {
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay:1s;
+    animation-delay: 1s;
+}
+
+.fade-in.three {
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+}
+
+.fade-in.three-long {
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+
+    -webkit-animation-duration:3s;
+    -moz-animation-duration:3s;
+    animation-duration:3s;
+}
+
+.fade-in.four-long {
+	-webkit-animation-delay: 3.5s;
+	-moz-animation-delay: 3.5s;
+	animation-delay: 3.5s;
+
+    -webkit-animation-duration:3.5s;
+    -moz-animation-duration:3.5s;
+    animation-duration:3.5s;
+}
+
+.darkyellow{
+    background-color: var(--darkyellow);
+}
+.darkgrey{
+    background-color: var(--darkgrey);
+}
+.lightyellow{
+    background-color: var(--lightyellow);
+}
+.lightgrey{
+    background-color: var(--lightgrey);
+}
+
+.responsive-table {
+    display: block;
+}
+
+.responsive-table-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    list-style: none;
+    width: 100%;
+}
+
+.os-table-container .responsive-table-cell:nth-child(5n){
+    margin-bottom: var(--row-margin);
+}
+
+.os-table-container {
+    --darkyellow:#FFF0B7;
+    --lightyellow:#FFF6D5;
+    --darkgrey: #E5E5E5;
+    --lightgrey: #F0F0F0;
+    --row-margin: 15px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.os-table-container .os-table-title{
+    text-align: center;
+}
+
+.os-table-container .responsive-table-cell{
+    padding: 30px 10px 30px 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============= Responsive rules ================= */
+
+@media only screen and (min-width: 800px) {
+    .wrapper {
+        width: 70%; 
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .flex-start-stretch{
+        display: flex;
+        align-items: flex-start;
+        align-content: stretch;
+        gap: 12px;
+    }
+
+    .column50{
+        flex-basis: 50%;
+    }
+
+    .os-table-container .responsive-table-cell:nth-child(5n){
+        margin-bottom: initial;
+    }
+
+    .os-table-container .responsive-table-cell:nth-last-child(n+6){
+        margin-bottom: var(--row-margin);
+    }
+
+
+    /* Responsive table*/
+    .responsive-table {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .responsive-table-2cols > .responsive-table-cell {
+        width: 50%;
+    }
+    .responsive-table-3cols > .responsive-table-cell {
+        width: 33.33%;
+    }
+    .responsive-table-4cols > .responsive-table-cell {
+        width: 25%;
+    }
+    .responsive-table-5cols > .responsive-table-cell {
+        width: 20%;
+    }
+    .responsive-table-6cols > .responsive-table-cell {
+        width: 16.6%;
+    }
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    nav .dropdown-area{
+        display: none;
+    }
+}
