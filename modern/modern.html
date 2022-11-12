@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<link rel="stylesheet" href="modern_style.css">
+		<link rel="stylesheet" href="progres-bar.css">
 	</head>
 	<body class="">
 
@@ -13,7 +14,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="index_3.svg" alt=""></span>
+						<span class="logo"><img src="index.svg" alt=""></span>
 						<h1>Hey, I'm <a href="../index.html">Jocho</a></h1>
 						<p>Computer Science Student based in Germany<br>
 					</p></header>
@@ -23,6 +24,7 @@
 						<li><a href="#intro" class="active">Introduction</a></li>
 						<li><a href="#first">Overview</a></li>
 						<li><a href="#second">Resume</a></li>
+						<li><a href="#third">Listen</a></li>
 						<li><a href="#cta">Get in Touch</a></li>
 					</ul>
 				</nav>
@@ -100,6 +102,22 @@ mostly native English speaker level.</p>
 								<p>Too much to tell it here</p>
 							</section>
 
+						<!-- Audio -->
+						<section id="third" class="main special inactive">
+							<header class="major">
+								<h2>Listen</h2>
+							</header>
+							
+							<!-- Media Player-->
+							<!-- Got this from here: https://www.jqueryscript.net/blog/best-custom-audio-player.html -->
+							<div class="mediPlayer">
+								<audio class="listen" preload="none" data-size="250" src="../audio_files/PRUM_2.mp3"></audio>
+							</div>
+							<!-- <footer class="major">
+
+							</footer> -->
+						</section>
+
 						<!-- Get Started -->
 							<section id="cta" class="main special inactive">
 								<header class="major">
@@ -138,7 +156,10 @@ mostly native English speaker level.</p>
 		<script src="./breakpoints.min.js"></script>
 		<script src="./util.js"></script>
 		<script src="./main.js"></script>
-
+		<!-- Audio Scripts -->
+		<script src="//code.jquery.com/jquery.min.js"></script>
+		<script src="player.js"></script>
+		<script>$('.mediPlayer').mediaPlayer();</script>
 </body></html>
 <!-- Credits go to:
 	Stellar by HTML5 UP
