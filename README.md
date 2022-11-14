@@ -1,3 +1,3 @@
 # Jocho-Smith.github.io
-- This is my highly professional website. 
+- This is my website. 
 - [Here](https://jocho-smith.github.io/) is the link.
