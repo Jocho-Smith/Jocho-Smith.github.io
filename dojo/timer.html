@@ -12,46 +12,41 @@
 </head>
 <body>
 
-<div id="safeTimer">
-    <h2>Timer 10 min</h2>
-    <p id="safeTimerDisplay">00:10</p>
-    </div>
 
+    <span id="count">10</span> Sekunden
+    <br>
+    <button onclick="start()">
+    START
+    </button>
+    <audio id="audio" src="Large-tibetan-meditation-bell-sound.mp3" preload="auto"></audio>
 <script>
-var a = document.createElement("audio");
-a.autoplay = true;
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-        if (timer === 1) {
-            const audio = new Audio("Large-tibetan-meditation-bell-sound.mp3");
-            audio.autoplay = true;
-            audio.play();
-        }
-
-        if (--timer < 0) {
-            timer = 0;
-            display.textContent = 'expired'
-        }
-    }, 1000);
+function startTimer(){
+  var counter = 10;// time in seconds
+  setInterval(function() {
+    counter--;
+    if (counter >= 0) {
+      span = document.getElementById("count");
+      span.innerHTML = counter*1;
+    }
+    if (counter === 0) {
+        audio.play();
+        alert('Und, wie fuehlst du dich im Vergleich zu vorher? :)');
+        clearInterval(counter);
+    }
+  }, 1000);
 }
+function start()
+{
+    document.getElementById("count");//.style="color:green;";
+    startTimer();
+};
 
-window.onload = function () {
-    var time = 10, // your time in seconds here
-        display = document.querySelector('#safeTimerDisplay');
-    startTimer(time, display);
-};  
 </script>
 
 </body>
 </html>
+
 
 
 
