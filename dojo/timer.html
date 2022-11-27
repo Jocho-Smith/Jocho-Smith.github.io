@@ -13,21 +13,27 @@
 <body>
 
 
-    <span id="count">10</span> Sekunden
+    <span id="min">00</span>:<span id="count">00</span>
     <br>
-    <button onclick="start()">
-    START
+    <button onclick="start(10)">
+    10 Sek
+    </button>
+    <button onclick="start(20)">
+    20 Sek
     </button>
     <audio id="audio" src="Large-tibetan-meditation-bell-sound.mp3" preload="auto"></audio>
 <script>
 
-function startTimer(){
-  var counter = 10;// time in seconds
+function startTimer(c){
+  var counter = c;// time in seconds
+  // var counter = 10;// time in seconds
   setInterval(function() {
     counter--;
     if (counter >= 0) {
       span = document.getElementById("count");
-      span.innerHTML = counter*1;
+      span.innerHTML = parseInt(counter % 60, 10);
+      min = document.getElementById("min");
+      min.innerHTML = parseInt(counter / 60, 10);
     }
     if (counter === 0) {
         audio.play();
@@ -36,11 +42,14 @@ function startTimer(){
     }
   }, 1000);
 }
-function start()
+
+function start(c)
 {
     document.getElementById("count");//.style="color:green;";
-    startTimer();
+    document.getElementById("min");
+    startTimer(c);
 };
+
 
 </script>
 

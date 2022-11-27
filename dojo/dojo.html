@@ -25,6 +25,8 @@
 						<li><a href="#first">Atemtechniken</a></li>
 						<!-- <li><a href="#second">Resume</a></li> -->
 						<li><a href="#third">Entspannung</a></li>
+						<li><a href="#timer">Timer</a></li>
+
 						<li><a href="#cta">Zukuenftige Updates</a></li>
 					</ul>
 				</nav>
@@ -124,24 +126,58 @@
 								<audio class="listen" preload="none" data-size="250" src="https://raw.githubusercontent.com/Jocho-Smith//dojo_library/main/atemuebungen/20x4_6_2_breathing.mp3"></audio>
 							</div>
 
+						</section>
 
 
-
-							<section id="second" class="main special inactive">
+							<section id="timer" class="main special inactive">
 								<header class="major">
 									<h2>Timer</h2>
 								</header>
+
+								<span id="min">00</span>:<span id="count">00</span>
+								<br>
+								<button onclick="start(3)">
+								(Audio Test)
+								</button>
+								<br>
+								<button onclick="start(5*60)">
+								5 Min
+								</button>
+								<br>
+								<button onclick="start(7*60)">
+									7 Min
+								</button>
+								<br>
+								<button onclick="start(10*60)">
+									10 Min
+								</button>
+								<br>
+								<button onclick="start(20*60)">
+									20 Min
+								</button>
+								<br>
+								<button onclick="start(30*60)">
+									30 Min
+								</button>
+								<br>
+								<audio id="audio" src="Large-tibetan-meditation-bell-sound.mp3" preload="auto"></audio>
+	
+	
+	
 							</section>
 
-							<footer class="major">
-									<a href="timer.html" class="button"> 10 Sek
-									</a>
-								</footer>
 
-							<!-- <footer class="major">
 
-							</footer> -->
-						</section>
+
+
+
+		
+
+
+
+
+
+
 
 						<!-- Get Started -->
 							<section id="cta" class="main special inactive">
@@ -184,6 +220,45 @@
 			</div>
 	
 		<!-- Scripts -->
+
+
+		<script>
+		// This is the script for the timer
+
+				function startTimer(c){
+		var counter = c;// time in seconds
+		// var counter = 10;// time in seconds
+		setInterval(function() {
+			counter--;
+			if (counter >= 0) {
+			span = document.getElementById("count");
+			span.innerHTML = parseInt(counter % 60, 10);
+			min = document.getElementById("min");
+			min.innerHTML = parseInt(counter / 60, 10);
+			}
+			if (counter === 0) {
+				audio.play();
+				alert('Und, wie fuehlst du dich im Vergleich zu vorher? :)');
+				clearInterval(counter);
+			}
+		}, 1000);
+		}
+
+		function start(c)
+		{
+			document.getElementById("count");//.style="color:green;";
+			document.getElementById("min");
+			startTimer(c);
+		};
+
+
+			</script>
+
+
+
+
+
+
 		<script src="./jquery.min.js"></script>
 		<script src="./jquery.scrollex.min.js"></script>
 		<script src="./jquery.scrolly.min.js"></script>
