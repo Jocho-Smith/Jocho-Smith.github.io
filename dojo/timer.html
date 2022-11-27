@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+} */
+</style>
+</head>
+<body>
+
+<div id="safeTimer">
+    <h2>Timer 10 min</h2>
+    <p id="safeTimerDisplay">00:10</p>
+    </div>
+
+<script>
+var a = document.createElement("audio");
+a.autoplay = true;
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+        if (timer === 1) {
+            const audio = new Audio("Large-tibetan-meditation-bell-sound.mp3");
+            audio.autoplay = true;
+            audio.play();
+        }
+
+        if (--timer < 0) {
+            timer = 0;
+            display.textContent = 'expired'
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var time = 10, // your time in seconds here
+        display = document.querySelector('#safeTimerDisplay');
+    startTimer(time, display);
+};  
+</script>
+
+</body>
+</html>
+
+
+
+
