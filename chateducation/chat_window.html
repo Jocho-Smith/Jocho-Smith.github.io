@@ -1,0 +1,172 @@
+
+    
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Chat Window</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+    #chat {
+    height: 300px;
+    width: 100%;
+    background-color: white;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    padding: 10px;
+    }
+    
+    #chat p {
+    margin: 5px 0;
+    }
+    
+    form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    }
+    
+    button[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    
+    button[type="button"]:hover {
+    background-color: #3e8e41;
+    }
+    
+    h1 {
+    text-align: center;
+    margin-top: 20px;
+    }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Student Chat Window</h1>
+
+    <div id="chat" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll;">
+        <!-- <p>Kim: Let's get started. Can you explain what the first stage in developing a startup or business is?</p> -->
+    </div>
+    <form>
+        <div style="display: flex;">
+            <input type="text" id="message" placeholder="Type a message..." style="flex: 1;">
+            <button type="button" onclick="sendMessage()" style="margin-left: 10px;">Send</button>
+        </div>
+    </form>
+
+
+    <script>
+        var conversation = [
+            {
+                sender: "Professor",
+                message: "Sind Sie bereit für Ihre mündliche Prüfung in Mathe?",
+                delay: 1000
+            },
+            {
+                sender: "Student",
+                message: "Ja, ich denke schon.",
+                delay: 2000
+            },
+            {
+                sender: "Professor",
+                message: "Ok, lassen Sie uns beginnen. Was ist die Definition von Ableitung?",
+                delay: 1500
+            },
+            {
+                sender: "Student",
+                message: "Die Ableitung einer Funktion gibt uns die Steigung der Tangente an einem bestimmten Punkt auf dem Graphen der Funktion.",
+                delay: 2500
+            },
+            {
+                sender: "Professor",
+                message: "Richtig. Können Sie ein Beispiel geben?",
+                delay: 2000
+            },
+            {
+                sender: "Student",
+                message: "Zum Beispiel ist die Ableitung von f(x) = x^2 gleich 2x.",
+                delay: 3000
+            },
+            {
+                sender: "Professor",
+                message: "Gut gemacht. Wie berechnet man die Ableitung von e^x?",
+                delay: 2500
+            },
+            {
+                sender: "Student",
+                message: "Die Ableitung von e^x ist einfach e^x selbst",
+                delay: 2000
+            },
+            {
+                sender: "Professor",
+                message: " Sehr gut. Was ist die Kettenregel?",
+                delay: 2500
+            },
+            {
+                sender: "Student",
+                message: "Die Kettenregel ist eine Methode zur Berechnung der Ableitung einer Funktion, die aus zwei oder mehr Funktionen zusammengesetzt ist.",
+                delay: 1500
+            }
+        ];
+
+        var index = 0;
+        var chat = document.getElementById("chat");
+
+
+        // function sendMessage() {
+        //     var message = document.getElementById("message").value;
+        //     document.getElementById("chat").innerHTML += "<p>You: " + message + "</p>";
+        //     document.getElementById("message").value = "";
+        // }
+
+        function sendMessage() {
+                var message = document.getElementById("message").value;
+                document.getElementById("chat").innerHTML += "<p>You: " + message + "</p>";
+                document.getElementById("message").value = "";
+                setTimeout(function () { receiveMessage(); }, 1000);
+            }
+
+            function receiveMessage() {
+                if (index >= conversation.length) {
+                    return;
+                }
+
+                var message = conversation[index];
+                chat.innerHTML += "<p>" + message.sender + ": " + message.message + "</p>";
+                index++;
+
+                setTimeout(function () { receiveMessage(); }, message.delay);
+            }
+
+            receiveMessage();
+
+
+
+    </script>
+</body>
+
+</html>
