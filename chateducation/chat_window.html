@@ -145,7 +145,7 @@
 
         function sendMessage() {
                 var message = document.getElementById("message").value;
-                document.getElementById("chat").innerHTML += "<p>You: " + message + "</p>";
+                document.getElementById("chat").innerHTML += "<p>Student: " + message + "</p>";
                 document.getElementById("message").value = "";
                 setTimeout(function () { receiveMessage(); }, 1000);
             }
