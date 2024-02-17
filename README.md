@@ -1,3 +1,3 @@
 # Jocho-Smith.github.io
 - This is my website. 
-- [Here](https://jocho-smith.github.io/) is the link.
+- link: [jocho.de](https://jocho.de)
