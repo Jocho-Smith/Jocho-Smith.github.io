@@ -1,65 +1,121 @@
 <!DOCTYPE html>
-<html lang="en" class=" muawidmck idc0_350"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="assets_new/app-4e4ea281b8647df27b31b287d13ceb5d562582e0f24070cebbbb987e.css">
-    <title>Jocho</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="author" content="Johannes Schmidt ">
+<html>
+<head>
+<title>Jocho</title>
+<meta name="Description" content="Personal Homepage of Johannes Schmidt.">
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
-<body style="background-color: #f0f0f0;">
+<body>
 
-<div class="container">
+<h1>Jocho</h1>
+<ul>
+<li><a class="nav" href="#bio">About Me</a></li>
+<li><a class="nav active" href="#activity">activity</a></li>
+<li><a style="padding:0px 0px;" href="https://github.com/Jocho-Smith" target="_blank"><i class="fa-brands fa-github" style="width:1em" alt="Github"></i></a></li>
+</ul>
 
+<section id="bio">
+<div class="bio">
+<div class="frontimg"><img class="img-circle" src="https://avatars.githubusercontent.com/u/56628013" alt="Jocho"></div>
+<br>
+<div class="frontp">
+<p class="frontp">
 
-    <div class="row content">
-        <div class="col-12 col-lg-9" style="flex: 0 0 100%; max-width: 100%;">
-<h2>Johannes Schmidt</h2>
+My name is Johannes Schmidt, but most people call me Jocho.
+<br><br>
+I'm currently working as a Ph.D. candidate in the <a href="https://ins.uni-bonn.de" target="_blank">Institute of Numerical Simulation</a> at the University of Bonn.
+<br><br>
+Besides research, I run the institute's IT infrastructure - workstations, networking, web services, and a 75-node HPC cluster - including recruiting, hardware procurement, and IT security.
+<br><br>
+Email: <a href="mailto:schmidt@ins.uni-bonn.de">schmidt@ins.uni-bonn.de</a>
 
-<p>
-    My name is Johannes Schmidt, but most people I work with call me <strong>Jocho</strong>.
 </p>
-
-<p>
-    I'm currently working as a Ph.D. candidate in the <a href="https://ins.uni-bonn.de" target="_blank">Institute of Numerical Simulation</a> at the University of Bonn.
-</p>
-<p>
-    Besides doing research I am responsible for the IT Infrastructure of the Institute. I lead/coordinate/train a team of 8 system administrators.
-</p>
-
-
-    <br><br><br><br><br>
 </div>
-
-
-
-
-        <div class="col-12 col-lg-9">
-
-            <h2>Contact</h2>
-            <ul>
-                <li>Address:<br>Institut für Numerische Simulation<br>Friedrich-Hirzebruch-Allee 7<br>53115 Bonn</li>
-                <li>Office: FHA7</li>
-                <li>Room 2.024 (or 2.040)</li>
-                <li>Phone:  +49 228 73-69789 (or -69806)</li>
-                <li>E-Mail: schmidt@ins.uni-bonn.de</li>
-            </ul>
-
-            
-            <br><br><br><br><br><br><br>
-        </div>
-
-
-
-
-    </div>
 </div>
+</section>
 
-<footer style="background-color: #333; text-align: center; padding: 10px 0;">
-    <!-- Common Footer Content (e.g., copyright information) -->
-    <p style="color: #fff;">© 2026 Johannes Schmidt. All rights reserved.</p>
-  </footer>
+<section id="activity">
 
-<script src="assets_new/app-db547366e57c6a122adbad29e13f60ce61f68dd2c92f21afbf0661196.js" type="text/javascript"></script>
+<h2 data-vis="none">activity</h2>
 
+<table id="activity-table" border="0" cellspacing="0">
+<tbody>
+
+<tr ><td class="ref">
+02/2026: Open source contributions to <a href="https://github.com/sbi-dev/sbi/pull/1803/" target="_blank">sbi</a> and <a href="https://github.com/redimp/otterwiki/pull/394" target="_blank">otterwiki</a>
+</td></tr>
+<tr><td class="ref">
+09/2025: Conference talk at <a href="https://ins.uni-bonn.de/media/public/u/garcke/hda2025/" target="_blank">10th Workshop on High-Dimensional Approximation</a>
+</td></tr>
+
+
+</tbody>
+</table>
+<div>
+<p>
+<button id="exp-btn" class="exp-btn" style="display: none;">Show more</button>
+</p>
+</div>
+</section>
+
+
+<footer>Copyright &copy; 2026 Johannes Schmidt</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const links = document.querySelectorAll("a.nav");
+  let menuScrollTimer = null;
+
+  function scrollToSection(target) {
+    const el = document.querySelector(target);
+    const y = el.getBoundingClientRect().top + window.scrollY - 23;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+  }
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      if (menuScrollTimer !== null) return;
+
+      menuScrollTimer = setTimeout(() => {
+        menuScrollTimer = null;
+      }, 666);
+
+      document.querySelector("a.nav.active")?.classList.remove("active");
+      link.classList.add("active");
+
+      scrollToSection(link.getAttribute("href"));
+    });
+  });
+
+  window.addEventListener("scroll", () => {
+    if (menuScrollTimer !== null) return;
+
+    const windowTop = window.scrollY;
+
+    links.forEach(link => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+
+      if (windowTop >= target.offsetTop - 25) {
+        document.querySelector("a.nav.active")?.classList.remove("active");
+        link.classList.add("active");
+      }
+    });
+  });
+
+});
+</script>
 
 </body></html>
