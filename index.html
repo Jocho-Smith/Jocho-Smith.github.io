@@ -1,121 +1,160 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta name="author" content="Johannes Schmidt ">
-<html>
+<html lang="en">
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Johannes Schmidt">
+<meta name="description" content="Personal Homepage of Johannes Schmidt">
+
 <title>Jocho</title>
-<meta name="Description" content="Personal Homepage of Johannes Schmidt.">
-<link rel="stylesheet" type="text/css" href="main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="main.css">
 
 </head>
 <body>
 
+<header>
 <h1>Jocho</h1>
+
+<nav>
 <ul>
 <li><a class="nav" href="#bio">About Me</a></li>
-<li><a class="nav active" href="#activity">activity</a></li>
-<li><a style="padding:0px 0px;" href="https://github.com/Jocho-Smith" target="_blank"><i class="fa-brands fa-github" style="width:1em" alt="Github"></i></a></li>
+<li><a class="nav active" href="#activity">Activity</a></li>
+<li>
+<a href="https://github.com/Jocho-Smith" target="_blank" class="github-link">
+  <img src="https://github.com/fluidicon.png" alt="Github">
+</a>
+</li>
 </ul>
+</nav>
+</header>
+
 
 <section id="bio">
+
 <div class="bio">
-<div class="frontimg"><img class="img-circle" src="https://avatars.githubusercontent.com/u/56628013" alt="Jocho"></div>
-<br>
-<div class="frontp">
-<p class="frontp">
 
+<img class="avatar" src="https://avatars.githubusercontent.com/u/56628013" alt="Jocho">
+
+<div class="bio-text">
+
+<p>
 My name is Johannes Schmidt, but most people call me Jocho.
-<br><br>
-I'm currently working as a Ph.D. candidate in the <a href="https://ins.uni-bonn.de" target="_blank">Institute of Numerical Simulation</a> at the University of Bonn.
-<br><br>
-Besides research, I run the institute's IT infrastructure - workstations, networking, web services, and a 75-node HPC cluster - including recruiting, hardware procurement, and IT security.
-<br><br>
-Email: <a href="mailto:schmidt@ins.uni-bonn.de">schmidt@ins.uni-bonn.de</a>
-
 </p>
+
+<p>
+I'm currently working as a Ph.D. candidate at the
+<a href="https://ins.uni-bonn.de" target="_blank" rel="noopener">
+Institute of Numerical Simulation
+</a>
+at the University of Bonn.
+</p>
+
+<p>
+Besides research, I run the institute's IT infrastructure -
+workstations, networking, web services and a 75-node HPC cluster -
+including recruiting, hardware procurement and IT security.
+</p>
+
+<p>
+Email:
+<a href="mailto:schmidt@ins.uni-bonn.de">schmidt@ins.uni-bonn.de</a>
+</p>
+
 </div>
 </div>
+
 </section>
+
 
 <section id="activity">
 
-<h2 data-vis="none">activity</h2>
+<h2>Activity</h2>
 
-<table id="activity-table" border="0" cellspacing="0">
-<tbody>
+<ul class="timeline">
 
-<tr ><td class="ref">
-02/2026: Open source contributions to <a href="https://github.com/sbi-dev/sbi/pull/1803/" target="_blank">sbi</a> and <a href="https://github.com/redimp/otterwiki/pull/394" target="_blank">otterwiki</a>
-</td></tr>
-<tr><td class="ref">
-09/2025: Conference talk at <a href="https://ins.uni-bonn.de/media/public/u/garcke/hda2025/" target="_blank">10th Workshop on High-Dimensional Approximation</a>
-</td></tr>
+<li>
+<span class="date">02/2026</span>
+Open source contributions to
+<a href="https://github.com/sbi-dev/sbi/pull/1803/" target="_blank" rel="noopener">sbi</a>
+and
+<a href="https://github.com/redimp/otterwiki/pull/394" target="_blank" rel="noopener">otterwiki</a>
+</li>
 
+<li>
+<span class="date">09/2025</span>
+Conference talk at
+<a href="https://ins.uni-bonn.de/media/public/u/garcke/hda2025/" target="_blank" rel="noopener">
+10th Workshop on High-Dimensional Approximation
+</a>
+</li>
 
-</tbody>
-</table>
-<div>
-<p>
-<button id="exp-btn" class="exp-btn" style="display: none;">Show more</button>
-</p>
-</div>
+</ul>
+
 </section>
 
 
-<footer>Copyright &copy; 2026 Johannes Schmidt</footer>
+<footer>
+Copyright © 2026 Johannes Schmidt
+</footer>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  const links = document.querySelectorAll("a.nav");
-  let menuScrollTimer = null;
+const links = document.querySelectorAll(".nav");
+let menuScrollTimer = null;
 
-  function scrollToSection(target) {
-    const el = document.querySelector(target);
-    const y = el.getBoundingClientRect().top + window.scrollY - 23;
+function scrollToSection(target) {
+const el = document.querySelector(target);
+const y = el.getBoundingClientRect().top + window.scrollY - 25;
 
-    window.scrollTo({
-      top: y,
-      behavior: "smooth"
-    });
-  }
+window.scrollTo({ top: y, behavior: "smooth" });
+}
 
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
+links.forEach(link => {
 
-      if (menuScrollTimer !== null) return;
+link.addEventListener("click", e => {
 
-      menuScrollTimer = setTimeout(() => {
-        menuScrollTimer = null;
-      }, 666);
+e.preventDefault();
 
-      document.querySelector("a.nav.active")?.classList.remove("active");
-      link.classList.add("active");
+if (menuScrollTimer !== null) return;
 
-      scrollToSection(link.getAttribute("href"));
-    });
-  });
+menuScrollTimer = setTimeout(() => menuScrollTimer = null, 666);
 
-  window.addEventListener("scroll", () => {
-    if (menuScrollTimer !== null) return;
+document.querySelector(".nav.active")?.classList.remove("active");
+link.classList.add("active");
 
-    const windowTop = window.scrollY;
+scrollToSection(link.getAttribute("href"));
 
-    links.forEach(link => {
-      const target = document.querySelector(link.getAttribute("href"));
-      if (!target) return;
+});
 
-      if (windowTop >= target.offsetTop - 25) {
-        document.querySelector("a.nav.active")?.classList.remove("active");
-        link.classList.add("active");
-      }
-    });
-  });
+});
+
+
+window.addEventListener("scroll", () => {
+
+if (menuScrollTimer !== null) return;
+
+const scrollPos = window.scrollY;
+
+links.forEach(link => {
+
+const target = document.querySelector(link.getAttribute("href"));
+if (!target) return;
+
+if (scrollPos >= target.offsetTop - 30) {
+document.querySelector(".nav.active")?.classList.remove("active");
+link.classList.add("active");
+}
+
+});
+
+});
 
 });
 </script>
 
-</body></html>
+</body>
+</html>
