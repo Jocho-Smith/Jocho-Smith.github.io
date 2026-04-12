@@ -7,15 +7,16 @@
 <meta name="description" content="Personal Homepage of Johannes Schmidt">
 <title>Jocho</title>
 <style>
+html{scroll-behavior:smooth;}
 body{font-family:system-ui,sans-serif;line-height:1.6;margin:0;color:#414141;text-align:left;}
 h1,h2,nav{font-family:sans-serif;text-transform:uppercase;}
 header{text-align:center;padding-top:60px;}
-nav{position:sticky;top:0;background:#f5f5f5;margin-top:30px;}
+nav{position:sticky;top:0;background:#f5f5f5;margin-top:30px;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
 nav ul{list-style:none;margin:0;padding:8px 0;text-align:center;}
 nav li{display:inline;margin:0 10px;}
 nav a{color:#7f7f7f;text-decoration:none;}
 nav a:hover,nav a.active{color:#349bc7;}
-section{max-width:700px;margin:70px auto;padding:0 20px;}
+section{max-width:700px;margin:70px auto;padding:0 20px;scroll-margin-top:25px;}
 h2{margin-bottom:25px;}
 .bio{display:flex;flex-direction:column;align-items:center;gap:30px;}
 .avatar{width:200px;border-radius:50%;}
@@ -28,8 +29,8 @@ footer{text-align:center;margin:80px 0 40px;}
 a{color:#7f7f7f;text-decoration:none;}
 a:hover{color:#349bc7;}
 @media(min-width:640px){.bio{flex-direction:row;align-items:center;}.avatar{width:220px;}}
-.github-link img{width:1.3em;height:1.3em;vertical-align:-3px;transition:transform 0.2s ease,opacity 0.2s ease;}
-.github-link:hover img{transform:scale(1.18);opacity:0.8;}
+.github-link svg{width:1.3em;height:1.3em;vertical-align:-3px;transition:transform 0.2s ease,opacity 0.2s ease;}
+.github-link:hover svg{transform:scale(1.18);opacity:0.8;}
 </style>
 </head>
 <body>
@@ -38,11 +39,11 @@ a:hover{color:#349bc7;}
 <h1>Jocho</h1>
 <nav>
 <ul>
-<li><a class="nav" href="#bio">About Me</a></li>
-<li><a class="nav active" href="#activity">Activity</a></li>
+<li><a class="nav active" href="#bio">About Me</a></li>
+<li><a class="nav" href="#activity">Activity</a></li>
 <li>
-<a href="https://github.com/Jocho-Smith" target="_blank" class="github-link">
-<img src="https://github.com/fluidicon.png" alt="Github">
+<a href="https://github.com/Jocho-Smith" target="_blank" rel="noopener" class="github-link" aria-label="GitHub Profile">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7f7f7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
 </a>
 </li>
 </ul>
@@ -67,7 +68,7 @@ a:hover{color:#349bc7;}
 <li><span class="date">02/2026</span> Open source contributions to <a href="https://github.com/sbi-dev/sbi/pull/1803/" target="_blank" rel="noopener">sbi</a> and <a href="https://github.com/redimp/otterwiki/pull/394" target="_blank" rel="noopener">otterwiki</a></li>
 <li><span class="date">09/2025</span> Talk at <a href="https://ins.uni-bonn.de/media/public/u/garcke/hda2025/" target="_blank" rel="noopener">10th Workshop on High-Dimensional Approximation</a></li>
 <li><span class="date">03/2025</span> 74th place globally in <a href="https://prosperity.imc.com/" target="_blank" rel="noopener">IMC Prosperity 3 competition</a> (≈8,000 teams)</li>
-<li><span class="date">06/2024</span> e-fellows <a href="https://drive.google.com/file/d/1TB3aFbZ6YDYiTYkeLoYYBE0FODR94haT/view?usp=sharing" target="_blank" rel="noopener">scholarship</a> </li>
+<li><span class="date">06/2024</span> e-fellows <a href="https://drive.google.com/file/d/1TB3aFbZ6YDYiTYkeLoYYBE0FODR94haT/view?usp=sharing" target="_blank" rel="noopener">scholarship</a></li>
 <li><span class="date">05/2024</span> 2nd place in 2nd MittelstandsMAKERTHON NRW</li>
 <li><span class="date">03/2023</span> Start-up spring school at <a href="https://www.uni-bonn.de/de/forschung-lehre/transfer/transfercenter-enacom/transfercenter-enacom" target="_blank" rel="noopener">enaCom</a></li>
 </ul>
@@ -79,31 +80,31 @@ a:hover{color:#349bc7;}
 document.addEventListener("DOMContentLoaded",()=>{
 const links=document.querySelectorAll(".nav");
 let menuScrollTimer=null;
-function scrollToSection(target){
-  const el=document.querySelector(target);
-  window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-25,behavior:"smooth"});
-}
+
 links.forEach(link=>{
-link.addEventListener("click",e=>{
-e.preventDefault();
-if(menuScrollTimer!==null) return;
-menuScrollTimer=setTimeout(()=>menuScrollTimer=null,666);
-document.querySelector(".nav.active")?.classList.remove("active");
-link.classList.add("active");
-scrollToSection(link.getAttribute("href"));
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    if(menuScrollTimer!==null) return;
+    menuScrollTimer=setTimeout(()=>menuScrollTimer=null,666);
+    document.querySelector(".nav.active")?.classList.remove("active");
+    link.classList.add("active");
+    history.pushState(null,"",link.getAttribute("href"));
+    document.querySelector(link.getAttribute("href")).scrollIntoView();
+  });
 });
-});
+
 window.addEventListener("scroll",()=>{
-if(menuScrollTimer!==null) return;
-const scrollPos=window.scrollY;
-links.forEach(link=>{
-const target=document.querySelector(link.getAttribute("href"));
-if(!target) return;
-if(scrollPos>=target.offsetTop-30){
-document.querySelector(".nav.active")?.classList.remove("active");
-link.classList.add("active");
-}
-});
+  if(menuScrollTimer!==null) return;
+  const scrollPos=window.scrollY;
+  for(let i=links.length-1;i>=0;i--){
+    const target=document.querySelector(links[i].getAttribute("href"));
+    if(!target) continue;
+    if(scrollPos>=target.offsetTop-30){
+      document.querySelector(".nav.active")?.classList.remove("active");
+      links[i].classList.add("active");
+      break;
+    }
+  }
 });
 });
 </script>
