@@ -14,8 +14,8 @@ header{text-align:center;padding-top:60px;}
 nav{position:sticky;top:0;background:#f5f5f5;margin-top:30px;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
 nav ul{list-style:none;margin:0;padding:8px 0;text-align:center;}
 nav li{display:inline;margin:0 10px;}
-nav a{color:#7f7f7f;text-decoration:none;}
-nav a:hover,nav a.active{color:#349bc7;}
+nav a{color:#595959;text-decoration:none;}
+nav a:hover,nav a.active{color:#1a6fa0;}
 section{max-width:700px;margin:70px auto;padding:0 20px;scroll-margin-top:25px;}
 h2{margin-bottom:25px;}
 .bio{display:flex;flex-direction:column;align-items:center;gap:30px;}
@@ -23,11 +23,13 @@ h2{margin-bottom:25px;}
 .bio-text{max-width:520px;}
 .timeline{list-style:none;padding:0;}
 .timeline li{margin-bottom:15px;position:relative;padding-left:18px;}
-.timeline li::before{content:"•";position:absolute;left:0;color:#349bc7;}
+.timeline li::before{content:"•";position:absolute;left:0;color:#1a6fa0;}
 .date{font-weight:bold;margin-right:6px;}
 footer{text-align:center;margin:80px 0 40px;}
-a{color:#7f7f7f;text-decoration:none;}
-a:hover{color:#349bc7;}
+a{color:#595959;text-decoration:none;}
+a:hover{color:#1a6fa0;}
+section a{color:#1a6fa0;text-decoration:underline;}
+section a:hover{color:#134f73;}
 @media(min-width:640px){.bio{flex-direction:row;align-items:center;}.avatar{width:220px;}}
 .github-link svg{width:1.3em;height:1.3em;vertical-align:-3px;transition:transform 0.2s ease,opacity 0.2s ease;}
 .github-link:hover svg{transform:scale(1.18);opacity:0.8;}
@@ -43,13 +45,14 @@ a:hover{color:#349bc7;}
 <li><a class="nav" href="#activity">Activity</a></li>
 <li>
 <a href="https://github.com/Jocho-Smith" target="_blank" rel="noopener" class="github-link" aria-label="GitHub Profile">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7f7f7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
 </a>
 </li>
 </ul>
 </nav>
 </header>
 
+<main>
 <section id="bio">
 <div class="bio">
 <img class="avatar" src="https://avatars.githubusercontent.com/u/56628013" alt="Jocho">
@@ -65,7 +68,7 @@ a:hover{color:#349bc7;}
 <section id="activity">
 <h2>Activity</h2>
 <ul class="timeline">
-<li><span class="date">05/2026</span> Accepted to <a href="https://summerofcode.withgoogle.com/programs/2026/projects/WQtQjDaJ" target="_blank" rel="noopener">Google Summer of Code 2026</a></li>
+<li><span class="date">05/2026</span> Accepted to <a href="https://summerofcode.withgoogle.com/programs/2026/projects/WQtQjDaJ" target="_blank" rel="noopener">Google Summer of Code 2026</a> · <a href="gsocblog.html">blog</a></li>
 <li><span class="date">04/2026</span> Talk at <a href="https://www.linkedin.com/posts/lorenzgraef_morgen-ist-clawcon-nrw-3-am-startplatz-k%C3%B6ln-activity-7454517329163423744-8LcT/" target="_blank" rel="noopener">ClawCon NRW #3 - STARTPLATZ</a></li>
 <li><span class="date">04/2026</span> Mentored 3 Bachelor students in cybersecurity internship (6 months); guided implementation of BSI baseline protection (all passed)</li>
 <li><span class="date">02/2026</span> Open source contributions to <a href="https://github.com/sbi-dev/sbi/pull/1803/" target="_blank" rel="noopener">sbi</a> and <a href="https://github.com/redimp/otterwiki/pull/394" target="_blank" rel="noopener">otterwiki</a></li>
@@ -76,6 +79,7 @@ a:hover{color:#349bc7;}
 <li><span class="date">03/2023</span> Start-up spring school at <a href="https://www.uni-bonn.de/de/forschung-lehre/transfer/transfercenter-enacom/transfercenter-enacom" target="_blank" rel="noopener">enaCom</a></li>
 </ul>
 </section>
+</main>
 
 <footer>Copyright © <script>document.write(new Date().getFullYear())</script> Johannes Schmidt</footer>
 

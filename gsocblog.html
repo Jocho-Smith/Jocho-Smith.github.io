@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Johannes Schmidt">
+<meta name="description" content="GSoC 2026 – sbi: Development Blog by Johannes Schmidt">
+<title>GSoC 2026 – sbi</title>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;}
+body{font-family:system-ui,sans-serif;line-height:1.6;margin:0;color:#414141;text-align:left;}
+h1,h2,h3,nav{font-family:sans-serif;}
+h1{text-transform:uppercase;}
+header{text-align:center;padding-top:60px;}
+nav{position:sticky;top:0;background:#f5f5f5;margin-top:30px;box-shadow:0 2px 5px rgba(0,0,0,0.05);padding:10px 20px;}
+nav .back{float:left;color:#595959;text-decoration:none;text-transform:uppercase;font-size:0.85em;font-weight:bold;}
+nav .back:hover{color:#1a6fa0;}
+.toc{max-width:700px;margin:0 auto;text-align:center;}
+.toc a{color:#595959;text-decoration:none;margin:0 8px;font-size:0.9em;}
+.toc a:hover{color:#1a6fa0;}
+main{max-width:700px;margin:50px auto;padding:0 20px;}
+article{margin-bottom:60px;padding-bottom:40px;border-bottom:1px solid #e8e8e8;scroll-margin-top:60px;}
+article:last-child{border-bottom:none;}
+.post-date{font-size:0.85em;color:#595959;text-transform:uppercase;margin-bottom:4px;}
+.post-title{margin:0 0 16px;font-size:1.4em;}
+article p{margin:12px 0;}
+article ul,article ol{padding-left:20px;}
+article a{color:#1a6fa0;text-decoration:underline;}
+article a:hover{color:#134f73;}
+pre[class*="language-"]{font-size:0.88em;border-radius:6px;margin:16px 0;}
+code:not([class*="language-"]){background:#f0f0f0;padding:2px 5px;border-radius:3px;font-size:0.9em;}
+footer{text-align:center;margin:80px 0 40px;color:#595959;font-size:0.9em;}
+a{color:#595959;text-decoration:none;}
+a:hover{color:#1a6fa0;}
+@media(max-width:640px){nav .back{float:none;display:block;margin-bottom:6px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>GSoC 2026 - sbi</h1>
+<p style="color:#595959;margin-top:-5px;">Development blog for my Google Summer of Code project</p>
+<nav aria-label="Blog navigation">
+<a class="back" href="index.html">← Jocho</a>
+<div class="toc" id="toc"></div>
+</nav>
+</header>
+
+<main id="posts">
+
+<!-- ============================================================
+     HOW TO ADD A NEW POST:
+     1. Copy the <article> template below.
+     2. Paste it HERE (above older posts so newest is on top).
+     3. Give it a unique id (e.g. id="post-2026-06-15").
+     4. Fill in date, title, and content.
+     The table of contents updates automatically.
+     ============================================================ -->
+
+
+
+<article id="post-2026-05-10">
+<p class="post-date">10 May 2026</p>
+
+<h2 class="post-title">1: Preparing for GSoC 2026</h2>
+
+<p>Welcome to the start of my GSoC 2026 journey with <a href="https://github.com/sbi-dev/sbi" target="_blank" rel="noopener">sbi</a>. I'll use this blog to document progress, implementation details, lessons learned, and technical insights throughout the summer.</p>
+
+<p>The proposal phase is complete, and now the focus shifts toward execution. My accepted proposal can be found here: <a href="https://drive.google.com/file/d/1_L1e3g1Xv8_mq1gZf0zoj1PkLiMjsHcg/view?usp=sharing" target="_blank" rel="noopener">GSoC 2026 Proposal</a>.</p>
+
+<p>During the bonding period, my main focus will be understanding the potential functions inside the <code>sbi.inference.potentials</code> module and how the rest of the inference pipeline depends on them. Its API is exposed in <a href="https://github.com/sbi-dev/sbi/blob/main/sbi/inference/potentials/__init__.py" target="_blank" rel="noopener">sbi/inference/potentials/__init__.py</a>:</p>
+
+<pre><code class="language-python">__all__ = ["likelihood_estimator_based_potential",
+           "mixed_likelihood_estimator_based_potential",
+           "posterior_estimator_based_potential",
+           "ratio_estimator_based_potential",
+           "vector_field_estimator_based_potential"]
+</code></pre>
+
+<p>My first step toward understanding them is writing docstring examples, see <a href="https://github.com/sbi-dev/sbi/pull/1820" target="_blank" rel="noopener">PR #1820</a>.</p>
+</article>
+
+
+
+</main>
+
+<footer>Copyright © <script>document.write(new Date().getFullYear())</script> Johannes Schmidt</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toc = document.getElementById("toc");
+  const articles = document.querySelectorAll("article");
+  const links = [];
+  articles.forEach(a => {
+    const title = a.querySelector(".post-title");
+    if (!title) return;
+    const link = document.createElement("a");
+    link.href = "#" + a.id;
+    link.textContent = title.textContent;
+    links.push(link);
+  });
+  links.forEach((l, i) => {
+    toc.appendChild(l);
+    if (i < links.length - 1) toc.appendChild(document.createTextNode(" · "));
+  });
+});
+</script>
+
+</body>
+</html>
