@@ -59,6 +59,23 @@ a:hover{color:#1a6fa0;}
      ============================================================ -->
 
 
+<article id="post-2026-06-20">
+  <p class="post-date">20 June 2026</p>
+
+  <h2 class="post-title">Week 3-5: First Implementation & API Pivot</h2>
+
+  <p>The first working prototype of the protocol-based potential function API is up in <a href="https://github.com/sbi-dev/sbi/pull/1876" target="_blank" rel="noopener">PR #1876</a>, including a comparison notebook (<code>sbi_old_vs_new_api.ipynb</code>) demonstrating the new API for NLE side by side with the current one.</p>
+
+  <p>While building the prototype I made two observations that suggest a simpler path to the original goal of stateless potential functions:</p>
+
+  <ol>
+    <li><strong>Stateless via copy instead of protocol redesign.</strong> Making <code>set_x()</code> return a new instance rather than mutating the existing one is enough to achieve statelesness for most workflows. The main open question is how this interacts with batched sampling, where the observation is swapped repeatedly.</li>
+    <li><strong>Remove <code>x_o</code> from the setup step entirely.</strong> Across all trainers (NLE, NPE, NRE), <code>x_o</code> is already always set to <code>None</code> when <code>build_posterior</code> is called internally. This means the only meaningful place to provide it is at <code>sample()</code> time, which is already how most user-facing code reads. Enforcing this would reduce surface area rather than add to it.</li>
+  </ol>
+
+  <p>Next step: implement and test the simplified approach in a separate branch to see whether it passes existing tests without adding new abstractions.</p>
+</article>
+
 <article id="post-2026-05-24">
   <p class="post-date">24 May 2026</p>
 
