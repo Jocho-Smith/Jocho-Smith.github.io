@@ -58,6 +58,28 @@ a:hover{color:#1a6fa0;}
      The table of contents updates automatically.
      ============================================================ -->
 
+<article id="post-2026-07-08">
+  <p class="post-date">8 July 2026</p>
+
+  <h2 class="post-title">Week 6-8: Investigating <code>set_x()</code> and Narrowing the Scope</h2>
+
+  <p>Over the past weeks, implementation work shifted toward a deeper investigation of the existing <code>set_x()</code> interface. What initially appeared to be a localized refactoring turned out to involve substantially more interactions between potential functions and posterior implementations than expected.</p>
+
+  <p>To better understand these interactions, I prepared an internal analysis document tracing how observations propagate through the codebase. Discussing these findings with my mentors revealed several additional edge cases and special implementations that need to be considered before attempting larger API changes.</p>
+
+  <ul>
+    <li><code>PosteriorBasedPotential</code> overrides <code>set_x()</code> with different default behavior than <code>BasePotential</code>, reflecting differences between inference methods.</li>
+    <li><code>MCMCPosterior</code> invokes <code>set_x()</code> multiple times during batched sampling, raising the question whether all calls are necessary.</li>
+    <li><code>BasePotential</code> currently exposes multiple mechanisms for storing and retrieving the observation, suggesting opportunities to simplify the interface.</li>
+    <li><code>EnsemblePosterior</code> introduces another special case by forwarding <code>set_x()</code> across multiple underlying potentials.</li>
+  </ul>
+
+  <p>Based on these discussions, the current plan is to first pursue smaller, self-contained improvements that simplify the existing implementation before returning to the broader goal of making <code>set_x()</code> stateless. This should provide useful improvements to the codebase while reducing the risk of making sweeping changes before fully understanding all interactions.</p>
+
+  <p>Next step: identify and implement the first small cleanup PR while continuing to refine the analysis of the remaining <code>set_x()</code> interactions. Also from 20.07 to 31.07, I'll be working on it full time.</p>
+</article>
+
+
 
 <article id="post-2026-06-20">
   <p class="post-date">20 June 2026</p>
