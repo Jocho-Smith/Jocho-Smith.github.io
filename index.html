@@ -57,7 +57,7 @@ section a:hover{color:#134f73;}
 <div class="bio">
 <img class="avatar" src="https://avatars.githubusercontent.com/u/56628013" alt="Jocho">
 <div class="bio-text">
-<p>My name is Johannes Schmidt, but most people call me Jocho.</p>
+<p id="worm-intro">My name is Johannes Schmidt.</p>
 <p>I'm currently working as a Ph.D. candidate at the <a href="https://ins.uni-bonn.de" target="_blank" rel="noopener">Institute of Numerical Simulation</a> at the University of Bonn.</p>
 <p>Besides research, I run the institute's IT infrastructure - workstations, networking, web services and a 75-node HPC cluster - including recruiting, hardware procurement and IT security.</p>
 <p>Email: <a href="mailto:schmidt@ins.uni-bonn.de">schmidt@ins.uni-bonn.de</a></p>
@@ -82,6 +82,26 @@ section a:hover{color:#134f73;}
 </main>
 
 <footer>Copyright © <script>document.write(new Date().getFullYear())</script> Johannes Schmidt</footer>
+
+<script>
+async function loadWormName() {
+  try {
+    const response = await fetch("https://api.toys/api/worm_name");
+    const data = await response.json();
+
+    const wormName = data.results?.[0];
+
+    if (wormName) {
+      document.getElementById("worm-intro").textContent =
+        `My name is Johannes Schmidt, but most people call me ${wormName}.`;
+    }
+  } catch (err) {
+    console.error("Failed to load worm name:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadWormName);
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
