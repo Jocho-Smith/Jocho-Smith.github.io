@@ -58,6 +58,63 @@ a:hover{color:#1a6fa0;}
      The table of contents updates automatically.
      ============================================================ -->
 
+
+<article id="post-2026-08-10">
+
+  <p class="post-date">10 August 2026</p>
+
+  <h2 class="post-title">Week 9-10: Deprecating <code>set_x()</code> and Finalizing the API Transition</h2>
+
+  <p>
+    The main focus over the past two weeks was turning the investigation from the previous weeks into a concrete migration path for deprecating <code>set_x()</code>. The original project goal was to make potential functions stateless and provide a more composable API. During implementation, it became clear that completely redesigning the potential function protocol was unnecessary. Instead, the existing <code>set_x()</code> interface can be deprecated by introducing <code>bind()</code> as its replacement and gradually moving the implementation and tests over to it.
+  </p>
+
+  <p>
+    The key idea is to make <code>bind()</code> and <code>set_x()</code> independent first, and then reverse their relationship. The first implementation of <code>bind()</code> used <code>set_x()</code> internally. After separating the two interfaces, <code>set_x()</code> can now be implemented in terms of <code>bind()</code>. This makes the eventual removal of <code>set_x()</code> straightforward: once users and internal code have migrated to <code>bind()</code>, deleting <code>set_x()</code> does not require another implementation change.
+  </p>
+
+  <ol>
+    <li>
+      <strong>PR #1943:</strong> Introduced <code>bind()</code>, initially using <code>set_x()</code> internally.
+    </li>
+    <li>
+      <strong>PR #1945:</strong> Decoupled <code>bind()</code> from <code>set_x()</code>, so the new API no longer depends on the old one.
+    </li>
+    <li>
+      <strong>PR #1946:</strong> Reworked <code>set_x()</code> to use <code>bind()</code> internally, effectively flipping their roles and preparing <code>set_x()</code> for deprecation.
+    </li>
+    <li>
+      <strong>PR #1948:</strong> Migrated the relevant tests from <code>set_x()</code> to <code>bind()</code>.
+    </li>
+  </ol>
+
+  <p>
+    With these changes, the core migration path for <code>set_x()</code> is now in place. The important part is that <code>bind()</code> is no longer just a wrapper around the old API: it is the underlying interface, while <code>set_x()</code> becomes the compatibility layer that can eventually be removed.
+  </p>
+
+  <p>
+    There is also a separate cleanup in progress to remove <code>.to()</code> from potential functions. This is orthogonal to the <code>set_x()</code> deprecation and is tracked independently in <a href="https://github.com/sbi-dev/sbi/pull/1970" target="_blank" rel="noopener">PR #1970</a>.
+  </p>
+
+  <p>
+    After the core PRs are merged, the remaining work will focus on documentation and cleaning up complexity that is no longer necessary with the new API. For example, <code>BasePotential.return_x_o</code> appears to be unnecessary because the same information can be accessed directly through <code>potential._x_o</code>. There are also a few remaining places where the deprecation warning and imports need to be cleaned up.
+  </p>
+
+  <p>
+    One larger API question that came up during this work is whether potentials should allow <code>x_o</code> to be provided during construction at all. The current codebase effectively follows a simpler workflow already: a new potential starts with <code>x_o=None</code>, and the observation is supplied later through <code>bind()</code>. Enforcing this consistently would remove several branches that currently distinguish between potentials initialized with and without an observation. It would also make the user-facing API less ambiguous, since currently both the potential/posterior constructor and the sampling interface can be used to specify the observation.
+  </p>
+
+  <p>
+    I am treating this as a potential follow-up project rather than expanding the current scope. The immediate goal is to finish the <code>set_x()</code> migration cleanly, document the new API, and remove complexity that can safely be eliminated as a consequence of the change.
+  </p>
+
+  <p>
+    Next step: finish the remaining core PRs, update the documentation around <code>bind()</code>, and identify the cleanup changes that can be safely made once the new API is established.
+  </p>
+
+</article>
+
+
 <article id="post-2026-07-08">
   <p class="post-date">8 July 2026</p>
 
