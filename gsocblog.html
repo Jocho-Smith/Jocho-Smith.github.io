@@ -63,7 +63,7 @@ a:hover{color:#1a6fa0;}
 
   <p class="post-date">10 August 2026</p>
 
-  <h2 class="post-title">Week 9-10: Deprecating <code>set_x()</code> and Finalizing the API Transition</h2>
+  <h2 class="post-title">Week 9-11: Deprecating <code>set_x()</code> and Finalizing the API Transition</h2>
 
   <p>
     The main focus over the past two weeks was turning the investigation from the previous weeks into a concrete migration path for deprecating <code>set_x()</code>. The original project goal was to make potential functions stateless and provide a more composable API. During implementation, it became clear that completely redesigning the potential function protocol was unnecessary. Instead, the existing <code>set_x()</code> interface can be deprecated by introducing <code>bind()</code> as its replacement and gradually moving the implementation and tests over to it.
